@@ -1,0 +1,29 @@
+.camera {
+    text-align: center;
+  }
+  
+  .camera h2 {
+    margin-bottom: 10px;
+  }
+  
+  .camera-input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .camera-button {
+    padding: 12px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .camera-button:hover {
+    background-color: #0056b3;
+  }
+  

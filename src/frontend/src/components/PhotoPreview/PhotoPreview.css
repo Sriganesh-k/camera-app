@@ -1,0 +1,21 @@
+.photo-preview {
+    text-align: center;
+  }
+  
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  
+  .photo-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s;
+  }
+  
+  .photo-thumbnail:hover {
+    transform: scale(1.05);
+  }
+  

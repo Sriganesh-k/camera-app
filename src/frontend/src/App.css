@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f8ff; /* Light blue */
+  color: #333; /* Dark gray text */
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px;
+  width: 100%;
+  max-width: 400px; /* Adjust width for smaller sections */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.camera-section {
+  width: 100%;
+  max-width: 600px; /* Camera section slightly larger */
+  text-align: center;
+}
+
+.group-list-section, .photo-preview-section {
+  width: 100%;
+  max-width: 400px; /* Keep group list and photo preview compact */
+}
+
+h2 {
+  color: #007bff; /* Blue header color */
+  margin-bottom: 15px;
+  text-align: center;
 }

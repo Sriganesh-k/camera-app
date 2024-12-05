@@ -1,0 +1,9 @@
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #ffffff; /* White */
+    --accent-color: #0056b3; /* Darker Blue */
+    --text-color: #333333; /* Dark Gray */
+    --light-gray: #f0f0f0; /* Light Gray */
+    --border-color: #e0e0e0; /* Light Border */
+  }
+  
