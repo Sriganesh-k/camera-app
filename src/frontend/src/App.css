@@ -1,52 +1,145 @@
+/* App.css */
+
+/* General Styles */
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f0f8ff; /* Light blue */
-  color: #333; /* Dark gray text */
   margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffffff, #e0f7fa); /* White to Blue Gradient */
+  color: #333;
 }
 
 .app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  text-align: center;
+  min-height: 100vh;
 }
 
-.content {
+/* Navigation Bar */
+.navbar {
+  background-color: #0277bd; /* Blue */
+  padding: 15px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
 }
 
-.card {
-  background-color: #ffffff; /* White background */
-  border: 1px solid #e0e0e0; /* Light border */
+.navbar li {
+  margin: 0 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar li:hover,
+.navbar li.active {
+  background-color: #01579b; /* Darker Blue */
+  border-radius: 5px;
+}
+
+/* Section Content */
+.section {
+  padding: 30px;
+  margin: 20px;
+  background-color: white;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 15px;
-  width: 100%;
-  max-width: 400px; /* Adjust width for smaller sections */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.camera-section {
-  width: 100%;
-  max-width: 600px; /* Camera section slightly larger */
-  text-align: center;
+/* Buttons */
+button {
+  background-color: #0277bd; /* Blue */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.group-list-section, .photo-preview-section {
-  width: 100%;
-  max-width: 400px; /* Keep group list and photo preview compact */
+button:hover {
+  background-color: #01579b;
+  transform: scale(1.05);
 }
 
-h2 {
-  color: #007bff; /* Blue header color */
-  margin-bottom: 15px;
-  text-align: center;
+button:active {
+  background-color: #003f73;
+}
+
+/* Image Grid for Photo Preview */
+img {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Success message */
+p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Group list styles */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 18px;
+  margin: 10px 0;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+li:hover {
+  color: #01579b;
+  text-decoration: underline;
+}
+
+video {
+  border: 2px solid #0277bd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  background-color: #0277bd;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #01579b;
+  transform: scale(1.05);
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
 }

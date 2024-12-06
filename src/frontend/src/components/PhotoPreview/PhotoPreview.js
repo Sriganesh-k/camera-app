@@ -1,46 +1,53 @@
 import React, { useState, useEffect } from "react";
-import Modal from "./Modal";
-import "./PhotoPreview.css";
 
-const PhotoPreview = ({ group }) => {
+const PhotoPreview = ({ group, updateTrigger }) => {
   const [photos, setPhotos] = useState([]);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   useEffect(() => {
     if (group) {
-      fetch(`http://localhost:8080/photos?group=${group}`)
-        .then((res) => res.json())
-        .then((data) => setPhotos(data))
-        .catch((err) => console.error("Error fetching photos:", err));
-    }
-  }, [group]);
+      const fetchPhotos = async () => {
+        try {
+          const response = await fetch(`http://localhost:8080/photos?group=${group}`);
+          const data = await response.json();
+          setPhotos(data);
+        } catch (error) {
+          console.error("Error fetching photos:", error);
+        }
+      };
 
-  const downloadPhotos = () => {
+      fetchPhotos();
+    }
+  }, [group, updateTrigger]);
+
+  const downloadGroupPhotos = () => {
     window.location.href = `http://localhost:8080/download?group=${group}`;
   };
 
   return (
-    <div className="photo-preview">
-      <h2>Photos in Group: {group}</h2>
-      <button onClick={downloadPhotos} className="download-button">
-        Download All as ZIP
-      </button>
-      <div className="photo-grid">
-        {photos.map((photo) => (
-          <img
-            key={photo}
-            src={`http://localhost:9000/photos/${photo}`}
-            alt={photo}
-            className="photo-thumbnail"
-            onClick={() => setSelectedPhoto(`http://localhost:9000/photos/${photo}`)}
-          />
-        ))}
-      </div>
-
-      {/* Modal for Full Photo View */}
-      <Modal show={selectedPhoto !== null} onClose={() => setSelectedPhoto(null)}>
-        <img src={selectedPhoto} alt="Full View" className="full-photo" />
-      </Modal>
+    <div>
+      {group && (
+        <>
+          <button onClick={downloadGroupPhotos}>Download All as ZIP</button>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "20px" }}>
+            {photos.map((photo, index) => (
+              <img
+                key={index}
+                src={`http://localhost:9000/photos/${photo}`} // Construct the correct URL
+                alt={`Photo ${index + 1}`}
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  cursor: "pointer",
+                  border: "1px solid #ccc",
+                }}
+                onClick={() => window.open(`http://localhost:9000/photos/${photo}`, "_blank")} // Open full-size image in a new tab
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -1,34 +1,37 @@
 import React, { useState, useEffect } from "react";
-import "./GroupList.css";
 
-const GroupList = ({ onGroupSelect }) => {
+const GroupList = ({ onGroupSelect, setActiveSection }) => {
   const [groups, setGroups] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8080/groups")
-      .then((res) => res.json())
-      .then((data) => setGroups(data))
-      .catch((err) => console.error("Error fetching groups:", err));
+    const fetchGroups = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/groups");
+        const data = await response.json();
+        setGroups(data);
+      } catch (error) {
+        console.error("Error fetching groups:", error);
+      }
+    };
+
+    fetchGroups();
   }, []);
 
-  const filteredGroups = groups.filter((group) =>
-    group.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleGroupClick = (group) => {
+    onGroupSelect(group); // Pass the selected group to App
+    setActiveSection("photos"); // Navigate to the photos section
+  };
 
   return (
-    <div className="group-list">
-      <h2>Photo Groups</h2>
-      <input
-        type="text"
-        placeholder="Search groups..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="search-bar"
-      />
+    <div>
+      <h2>Groups</h2>
       <ul>
-        {filteredGroups.map((group) => (
-          <li key={group} onClick={() => onGroupSelect(group)}>
+        {groups.map((group, index) => (
+          <li
+            key={index}
+            onClick={() => handleGroupClick(group)}
+            style={{ cursor: "pointer", color: "#0277bd" }}
+          >
             {group}
           </li>
         ))}

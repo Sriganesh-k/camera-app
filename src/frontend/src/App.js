@@ -1,24 +1,59 @@
 import React, { useState } from "react";
+import Camera from "./components/Camera/Camera";
 import GroupList from "./components/GroupList/GroupList";
 import PhotoPreview from "./components/PhotoPreview/PhotoPreview";
-import Camera from "./components/Camera/Camera";
 import "./App.css";
 
 const App = () => {
   const [selectedGroup, setSelectedGroup] = useState("");
+  const [activeSection, setActiveSection] = useState("camera");
 
   return (
     <div className="app">
-      <div className="card camera-section">
-        <Camera />
-      </div>
+      {/* Navigation Menu */}
+      <nav className="navbar">
+        <ul>
+          <li
+            className={activeSection === "camera" ? "active" : ""}
+            onClick={() => setActiveSection("camera")}
+          >
+            Camera
+          </li>
+          <li
+            className={activeSection === "groups" ? "active" : ""}
+            onClick={() => setActiveSection("groups")}
+          >
+            Groups
+          </li>
+          <li
+            className={activeSection === "photos" ? "active" : ""}
+            onClick={() => setActiveSection("photos")}
+          >
+            Photos
+          </li>
+        </ul>
+      </nav>
+
+      {/* Conditional Rendering Based on Active Section */}
       <div className="content">
-        <div className="card group-list-section">
-          <GroupList onGroupSelect={setSelectedGroup} />
-        </div>
-        <div className="card photo-preview-section">
-          <PhotoPreview group={selectedGroup} />
-        </div>
+        {activeSection === "camera" && (
+          <div className="section">
+            <Camera />
+          </div>
+        )}
+        {activeSection === "groups" && (
+          <div className="section">
+            <GroupList
+              onGroupSelect={setSelectedGroup}
+              setActiveSection={setActiveSection}
+            />
+          </div>
+        )}
+        {activeSection === "photos" && (
+          <div className="section">
+            <PhotoPreview group={selectedGroup} />
+          </div>
+        )}
       </div>
     </div>
   );
