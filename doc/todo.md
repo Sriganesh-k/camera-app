@@ -9,15 +9,7 @@ The user should be able to take photos wiht his webcam on the front end. There s
 
 The frontend should have a list view of all groups including search function. By clicking a group all photos of this group should be shown in a preview with the possibility to download all group photos as a zip or show the full version of a photo by clicking.
 
-+49 170 1774788, Claude.ai 3.5 Sonnet Model!
 
-Create new Github repo, invite mw@welectron.com
-
-
-
-New task today (upgrad)
-
-*
 - .gitignore missing items like "**/node_modules"
 - Not using mux+gorm
 - Frontend live updating?
